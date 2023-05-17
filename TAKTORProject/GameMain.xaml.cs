@@ -3,109 +3,82 @@
 public partial class GameMain : ContentPage
 {
     private int countClick = 0, countMove = 0, countCorrect = 0, queue = 0, totalMove = 0;
-    private ImageButton btn1, btn2;
-    string score;
+    string score,a;
     string[,,] gamePath;
-    List<int> randRow, randCol;
     private TimeOnly time = new();
     private bool timeRun = true;
+    List<string> pathList = new List<string>();
+    List<int> randRow, randCol,randomNumbers;
+    private ImageButton btn1, btn2;
+    
 
     public GameMain()
     {
         InitializeComponent();
-        CreateQueue();
-        AddPuzzle();
+        _ = A();
+    }
+
+    private async Task A()
+    {
+        Task a = ReadFile();
+        await Task.WhenAll(a);
+        Task b = CreateQueue();
+        await Task.WhenAll(b);
+        Task c = AddPuzzle();
+        await Task.WhenAll(c);
         Timer();
-
-    }
-    private async void Timer()
-    {
-        while (timeRun)
-        {
-            time = time.Add(TimeSpan.FromSeconds(1));
-            LTimer.Text = "Time: " + $"{time.Minute}.{time.Second:00}";
-            await Task.Delay(TimeSpan.FromSeconds(1));
-        }
     }
 
-    private async void CreateQueue()
+    private async Task ReadFile()
     {
-        List<string> pathList = new List<string>();
-        int row = 0, col = 0;
-        string a;
+
         string line;
-
-        //ควรจะใช้อันนี้แต่มีปัญหาง่ะ
-        try
+        string targetFilePath = Path.Combine(FileSystem.AppDataDirectory, "gamepath_file.txt");
+        using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync("gamepath_file.txt");
+        using (var reader = new StreamReader(fileStream))
         {
-            using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync("gamepath_file.txt");
-            using StreamReader reader = new StreamReader(fileStream);
             while ((line = reader.ReadLine()) != null)
             {
                 var values = line.Split(',');
-                col = values.Length;
                 for (int i = 0; i < values.Length; i++)
                 {
                     pathList.Add(values[i]);
                 }
-                row++;
             }
         }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", ex.Message, "OK");
-        }
-
-        //ใช้ไปก่อน/////////////////////////////////////////
-       /*
-        using (var reader = new StreamReader("D:\\gamepath_file.txt"))
-        {
-            while (!reader.EndOfStream)
-            {
-                line = reader.ReadLine();
-                var values = line.Split(',');
-                col = values.Length;
-                for (int i = 0; i < values.Length; i++)
-                {
-                    pathList.Add(values[i]);
-                }
-                row++;
-            }
-        }
-        */
-
-        string[,] filePath = new string[row, col];
+    }
+    private async Task CreateQueue()
+    {
+        randRow = GetRandomNumbers(5);
+        randCol = GetRandomNumbers(16);
+        string[,] filePath = new string[5, 16];
         int index = 0;
-        for (int i = 0; i < row; i++)
+        for (int i = 0; i < 5; i++)
         {
-            for (int j = 0; j < col; j++)
+            for (int j = 0; j < 16; j++)
             {
                 filePath[i, j] = pathList[index];
                 index++;
             }
         }
-
-        randRow = GetRandomNumbers(row);
-        randCol = GetRandomNumbers(col);
-        gamePath = new string[row, col, 2];
-
-        for (int i = 0; i < row; i++)
+   
+        gamePath = new string[5, 16, 2];
+        for (int i = 0; i < 5; i++)
         {
-            for (int j = 0; j < col; j++)
+            for (int j = 0; j < 16; j++)
             {
-                if (randCol[j] > ((col / 2) - 1))
+                if (randCol[j] > ((16 / 2) - 1))
                 {
-                    randCol[j] %= (col / 2);
+                    randCol[j] %= 8;
                 }
                 gamePath[i, j, 0] = randCol[j].ToString();
                 gamePath[i, j, 1] = filePath[i, j];
             }
-
         }
-
-        for (int i = 0; i < row; i++)
+        string x="";
+        for (int i = 0; i < 5; i++)
         {
-            for (int j = col - 1; j >= 0; j--)
+            for (int j = 16 - 1; j >= 0; j--)
             {
                 for (int k = 0; k < j; k++)
                 {
@@ -114,14 +87,14 @@ public partial class GameMain : ContentPage
                         a = gamePath[i, j, 1];
                         gamePath[i, j, 1] = gamePath[i, k, 1];
                         gamePath[i, k, 1] = a;
+                        x += gamePath[i, k, 1];
                     }
-
                 }
             }
         }
-
     }
-    private void AddPuzzle()
+    
+    private async Task AddPuzzle()
     {
         int round = 0;
         countMove = 0;
@@ -145,17 +118,13 @@ public partial class GameMain : ContentPage
                 round++;
             }
         }
-
     }
 
-
-
-    public static List<int> GetRandomNumbers(int count)
+    public List<int> GetRandomNumbers(int count)
     {
-        List<int> randomNumbers = new List<int>();
+        randomNumbers = new List<int>();
         var random = new Random();
         int number;
-
         for (int i = 0; i < count; i++)
         {
             do
@@ -168,10 +137,8 @@ public partial class GameMain : ContentPage
         return randomNumbers;
     }
 
-
     public async void OnImageButtonClicked(object sender, EventArgs e)
     {
-
         countClick++;
         if (countClick == 1)
         {
@@ -181,13 +148,12 @@ public partial class GameMain : ContentPage
         else if (countClick == 2)
         {
             countMove++;
-            LCountMove.Text = "move: " + countMove.ToString();
+            LCountMove.Text = "Move: " + countMove.ToString();
             countClick = 0;
             btn2 = sender as ImageButton;
             if (btn1.ClassId == btn2.ClassId)
             {
                 btn2.IsEnabled = false;
-
                 SwapImage(btn1, btn2);
                 countCorrect++;
             }
@@ -195,8 +161,6 @@ public partial class GameMain : ContentPage
             {
                 btn1.IsEnabled = true;
                 await DisplayAlert("Incorrect", "Try again ", "OK");
-
-
             }
         }
         if (countCorrect % 8 == 0 && countCorrect != 0)
@@ -217,31 +181,31 @@ public partial class GameMain : ContentPage
             else
             {
                 totalMove += countMove;
-                AddPuzzle();
-
+                await AddPuzzle();
             }
         }
     }
 
     private void ShowScore()
     {
-        Label totalScore1 = new Label();
-        totalScore1.Text = "Your Score";
-        totalScore1.FontSize = 50;
+        Label totalScore1 = new Label {Text = "Your Score",FontSize = 50, HorizontalOptions = LayoutOptions.Center };
         VLayout.Add(totalScore1);
-
-        Label totalScore2 = new Label();
-        totalScore2.Text = score;
-        totalScore2.FontSize = 80;
+        Label totalScore2 = new Label {Text = score,FontSize = 80, HorizontalOptions = LayoutOptions.Center };
         VLayout.Add(totalScore2);
+        Button home = new Button { Text = "Back to Home" ,BackgroundColor= Color.FromRgb(255,80,180)};
+        home.Clicked += homeClicked;
+        VLayout.Add(home);
+    }
 
-
+    private async void homeClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new MainPage());
     }
     private string Score(string time)
     {
         time = time.Remove(0, 6);
         Double totalTime = Convert.ToDouble(time);
-        Double cal = (1000 - (totalMove - (8 * randRow.Count())) + (10000 - (totalTime * 100)));
+        Double cal = 1000 - ((totalMove - (8 * randRow.Count())*10) - (totalTime * 100));
         int score = (int)cal;
         return score.ToString();
     }
@@ -253,5 +217,15 @@ public partial class GameMain : ContentPage
         swap1.Source = swap2.Source;
         swap2.Source = x.Source;
 
+    }
+
+    private async void Timer()
+    {
+        while (timeRun)
+        {
+            time = time.Add(TimeSpan.FromSeconds(1));
+            LTimer.Text = "Time: " + $"{time.Minute}.{time.Second:00}";
+            await Task.Delay(TimeSpan.FromSeconds(1));
+        }
     }
 }

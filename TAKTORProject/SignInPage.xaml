@@ -22,7 +22,7 @@
                 VerticalOptions="End" />
 
                 <Label Text="Welcome to TAKTOR"
-                   FontSize="Header"
+                   FontSize="Large"
                    TextColor="White"
                    FontAttributes="Bold"
                    HorizontalTextAlignment="Center"

@@ -8,7 +8,7 @@
     <VerticalStackLayout VerticalOptions="Center">
         <StackLayout>
             <Label Text="Sign Up"
-                   FontSize="Header"
+                   FontSize="Large"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="End" />
 
@@ -16,7 +16,7 @@
                          HorizontalOptions="Center">
 
                 <Label Text="Already have a account?"
-                       FontSize="Medium"
+                       FontSize="Small"
                        TextColor="#478BA2" />
 
                 <Button Text="Sign In"
@@ -72,7 +72,7 @@
                 Margin="250,5,250,20"
                 WidthRequest="275"
                 Clicked="OnCreateAccountButtonClicked"
-                FontSize="Medium"/>
+                FontSize="Small"/>
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -12,7 +12,7 @@
             <Image
                 Source="game_title.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="250"
+                HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <Button
