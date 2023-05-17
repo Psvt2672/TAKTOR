@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TAKTORProject.GamePage"
+             Title="GamePage"
+             Shell.NavBarIsVisible="false">
+    <ScrollView Background="#333335" >
+        <VerticalStackLayout
+            Spacing="10"
+            VerticalOptions="Center">
+
+            <Image
+                Source="game_title.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="250"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="StartBtn"
+                Text="START"
+                FontAttributes="Bold"  
+                CornerRadius="20"
+                Clicked="StartGameClicked"
+                WidthRequest="300"
+                HorizontalOptions="Center" 
+                BackgroundColor="#EAB595"
+                Margin="0,20,0,0"
+            />
+
+            <Button
+                x:Name="HowBtn"
+                Text="HOW TO PLAY"
+                FontAttributes="Bold"  
+                CornerRadius="20"
+                Clicked="HowToPlayClicked"
+                WidthRequest="300"
+                HorizontalOptions="Center" 
+                BackgroundColor="#EAB595"
+            />
+
+            <Button
+                x:Name="ScoreBtn"
+                Text="SCORE"
+                FontAttributes="Bold"  
+                CornerRadius="20"
+                Clicked="ScoreClicked"
+                WidthRequest="300"
+                HorizontalOptions="Center" 
+                BackgroundColor="#EAB595"
+            />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

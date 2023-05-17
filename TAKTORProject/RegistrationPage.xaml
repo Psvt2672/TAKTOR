@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TAKTORProject.RegistrationPage"
+             Title="RegistrationPage"
+             Shell.NavBarIsVisible="false"
+             BackgroundColor="#333335">
+    <VerticalStackLayout VerticalOptions="Center">
+        <StackLayout>
+            <Label Text="Sign Up"
+                   FontSize="Header"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="End" />
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+
+                <Label Text="Already have a account?"
+                       FontSize="Medium"
+                       TextColor="#478BA2" />
+
+                <Button Text="Sign In"
+                        BackgroundColor="#478BA2"
+                        TextColor="White"
+                        FontSize="Micro"
+                        FontAttributes="Bold"
+                        CornerRadius="20"
+                        Margin="10,-5,0,20"
+                        Clicked="OnSignInButtonClicked"/>
+            </StackLayout>
+
+            <Entry Placeholder="Email:"
+               Keyboard="Email"
+               FontSize="Small"
+               TextColor="Black"
+               BackgroundColor="WhiteSmoke"
+               WidthRequest="275"
+               Margin="250,0,250,20"
+               x:Name="EmailEntry" />
+
+            <Entry Placeholder="Username:"
+               Keyboard="Default"
+               FontSize="Small"
+               WidthRequest="275"
+               TextColor="Black"
+               BackgroundColor="WhiteSmoke"
+               Margin="250,0,250,20"
+               x:Name="UsernameEntry" />
+
+            <Entry Placeholder="Password:"
+               IsPassword="True"
+               FontSize="Small"
+               WidthRequest="275"
+               TextColor="Black"
+               BackgroundColor="WhiteSmoke"
+               Margin="250,0,250,20"
+               x:Name="PasswordEntry" />
+
+            <Entry Placeholder="Confirm Password:"
+               IsPassword="True"
+               FontSize="Small"
+               TextColor="Black"
+               WidthRequest="275"
+               BackgroundColor="WhiteSmoke"
+               Margin="250,0,250,20"
+               x:Name="ConfirmPasswordEntry" />
+
+            <Button Text="Create a Account"
+                BackgroundColor="#7E9680"
+                TextColor="White"
+                CornerRadius="5"
+                Margin="250,5,250,20"
+                WidthRequest="275"
+                Clicked="OnCreateAccountButtonClicked"
+                FontSize="Medium"/>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

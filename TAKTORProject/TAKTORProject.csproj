@@ -1,0 +1,178 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>TAKTORProject</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>TAKTORProject</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.taktorproject</ApplicationId>
+		<ApplicationIdGuid>c0dd033a-6fa5-4499-9d02-781bb4622ad3</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\afukincat.png" />
+	  <None Remove="Resources\Images\g1_001.png" />
+	  <None Remove="Resources\Images\g1_002.png" />
+	  <None Remove="Resources\Images\g1_003.png" />
+	  <None Remove="Resources\Images\g1_004.png" />
+	  <None Remove="Resources\Images\g1_005.png" />
+	  <None Remove="Resources\Images\g1_006.png" />
+	  <None Remove="Resources\Images\g1_007.png" />
+	  <None Remove="Resources\Images\g1_008.png" />
+	  <None Remove="Resources\Images\g1_009.png" />
+	  <None Remove="Resources\Images\g1_010.png" />
+	  <None Remove="Resources\Images\g1_011.png" />
+	  <None Remove="Resources\Images\g1_012.png" />
+	  <None Remove="Resources\Images\g1_013.png" />
+	  <None Remove="Resources\Images\g1_014.png" />
+	  <None Remove="Resources\Images\g1_015.png" />
+	  <None Remove="Resources\Images\g1_016.png" />
+	  <None Remove="Resources\Images\g2_001.png" />
+	  <None Remove="Resources\Images\g2_002.png" />
+	  <None Remove="Resources\Images\g2_003.png" />
+	  <None Remove="Resources\Images\g2_004.png" />
+	  <None Remove="Resources\Images\g2_005.png" />
+	  <None Remove="Resources\Images\g2_006.png" />
+	  <None Remove="Resources\Images\g2_007.png" />
+	  <None Remove="Resources\Images\g2_008.png" />
+	  <None Remove="Resources\Images\g2_009.png" />
+	  <None Remove="Resources\Images\g2_010.png" />
+	  <None Remove="Resources\Images\g2_011.png" />
+	  <None Remove="Resources\Images\g2_012.png" />
+	  <None Remove="Resources\Images\g2_013.png" />
+	  <None Remove="Resources\Images\g2_014.png" />
+	  <None Remove="Resources\Images\g2_015.png" />
+	  <None Remove="Resources\Images\g2_016.png" />
+	  <None Remove="Resources\Images\g3_001.png" />
+	  <None Remove="Resources\Images\g3_002.png" />
+	  <None Remove="Resources\Images\g3_003.png" />
+	  <None Remove="Resources\Images\g3_004.png" />
+	  <None Remove="Resources\Images\g3_005.png" />
+	  <None Remove="Resources\Images\g3_006.png" />
+	  <None Remove="Resources\Images\g3_007.png" />
+	  <None Remove="Resources\Images\g3_008.png" />
+	  <None Remove="Resources\Images\g3_009.png" />
+	  <None Remove="Resources\Images\g3_010.png" />
+	  <None Remove="Resources\Images\g3_011.png" />
+	  <None Remove="Resources\Images\g3_012.png" />
+	  <None Remove="Resources\Images\g3_013.png" />
+	  <None Remove="Resources\Images\g3_014.png" />
+	  <None Remove="Resources\Images\g3_015.png" />
+	  <None Remove="Resources\Images\g3_016.png" />
+	  <None Remove="Resources\Images\g4_001.png" />
+	  <None Remove="Resources\Images\g4_002.png" />
+	  <None Remove="Resources\Images\g4_003.png" />
+	  <None Remove="Resources\Images\g4_004.png" />
+	  <None Remove="Resources\Images\g4_005.png" />
+	  <None Remove="Resources\Images\g4_006.png" />
+	  <None Remove="Resources\Images\g4_007.png" />
+	  <None Remove="Resources\Images\g4_008.png" />
+	  <None Remove="Resources\Images\g4_009.png" />
+	  <None Remove="Resources\Images\g4_010.png" />
+	  <None Remove="Resources\Images\g4_011.png" />
+	  <None Remove="Resources\Images\g4_012.png" />
+	  <None Remove="Resources\Images\g4_013.png" />
+	  <None Remove="Resources\Images\g4_014.png" />
+	  <None Remove="Resources\Images\g4_015.png" />
+	  <None Remove="Resources\Images\g4_016.png" />
+	  <None Remove="Resources\Images\g5_001.png" />
+	  <None Remove="Resources\Images\g5_002.png" />
+	  <None Remove="Resources\Images\g5_003.png" />
+	  <None Remove="Resources\Images\g5_004.png" />
+	  <None Remove="Resources\Images\g5_005.png" />
+	  <None Remove="Resources\Images\g5_006.png" />
+	  <None Remove="Resources\Images\g5_007.png" />
+	  <None Remove="Resources\Images\g5_008.png" />
+	  <None Remove="Resources\Images\g5_009.png" />
+	  <None Remove="Resources\Images\g5_010.png" />
+	  <None Remove="Resources\Images\g5_011.png" />
+	  <None Remove="Resources\Images\g5_012.png" />
+	  <None Remove="Resources\Images\g5_013.png" />
+	  <None Remove="Resources\Images\g5_014.png" />
+	  <None Remove="Resources\Images\g5_015.png" />
+	  <None Remove="Resources\Images\g5_016.png" />
+	  <None Remove="Resources\Images\gamebtn.svg" />
+	  <None Remove="Resources\Images\game_title.png" />
+	  <None Remove="Resources\Images\learningbtn.svg" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\storebtn.svg" />
+	  <None Remove="Resources\Images\t02.png" />
+	  <None Remove="Resources\Images\t03.svg" />
+	  <None Remove="Resources\Images\taktor_logo.svg" />
+	  <None Remove="Resources\Images\testim01.svg" />
+	  <None Remove="Resources\Raw\gamepath_file.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="sqlite-net" Version="1.6.292" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.provider.e_sqlite3" Version="2.1.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="GameMain.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="GamePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="LearningPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="RegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SignInPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="StorePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>
