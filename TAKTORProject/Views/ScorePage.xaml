@@ -24,7 +24,7 @@
         <Label Text="Record List" FontSize="Large" TextColor="White" HorizontalOptions="Center" Padding="20" FontAttributes="Bold"/>
 
         <StackLayout Padding="10">
-            <Grid ColumnDefinitions="130, 50,80" ColumnSpacing="50" HorizontalOptions="Center">
+            <Grid ColumnDefinitions="130, 60,70" ColumnSpacing="50" HorizontalOptions="Center">
                 <Label Text="Username" FontSize="Small" TextColor="White" Grid.Column="0" FontAttributes="Bold"/>
                 <Label Text="Score" FontSize="Small" TextColor="White" Grid.Column="1" FontAttributes="Bold" />
                 <Label Text="Time (min)" FontSize="Small" TextColor="White" Grid.Column="2" FontAttributes="Bold"/>

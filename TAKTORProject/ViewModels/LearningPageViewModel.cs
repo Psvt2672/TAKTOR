@@ -24,7 +24,7 @@ public partial class LearningPageViewModel : ObservableObject
 		try
 		{
 			//wait for loading animation
-			await Task.Delay(2000);
+			await Task.Delay(500);
 			//define text file path
 			var fileStream = await FileSystem.Current.OpenAppPackageFileAsync("textile.json");
 			//read stream from that file 
