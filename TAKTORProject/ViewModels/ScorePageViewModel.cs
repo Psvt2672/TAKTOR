@@ -28,14 +28,10 @@ namespace TAKTORProject.ViewModels
                 foreach (Record record in Records)
                     Console.WriteLine(record.Score);
             }
-            catch(AggregateException ex)
-            {
-                // Handle or log the aggregate exception and its inner exceptions
-                foreach (var innerException in ex.InnerExceptions)
-                {
-                    Console.WriteLine($"An error occurred: {innerException.Message}");
-                }
+            catch(Exception ee) {
+                Console.WriteLine(ee.Message);
             }
+            
         }
     }
 }

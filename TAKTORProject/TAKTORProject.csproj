@@ -30,6 +30,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -142,6 +145,9 @@
 	  <None Remove="Resources\Images\taktor_logo.svg" />
 	  <None Remove="Resources\Images\testim01.svg" />
 	  <None Remove="Resources\Raw\gamepath_file.txt" />
+	  <None Remove="Resources\Raw\textile.json" />
+	  <None Remove="Resources\Images\empty.png" />
+	  <None Remove="Resources\AppIcon\logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -188,5 +194,14 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <BundleResource Include="Resources\Raw\textile.json" />
+	  <BundleResource Include="Resources\Images\empty.png" />
+	  <BundleResource Include="Resources\AppIcon\logo.png" />
+	</ItemGroup>
+	<ItemGroup>
+    <MauiSplashScreen Include="Resources\AppIcon\logo.png" BaseSize="128,128"/>
+</ItemGroup>
 
 </Project>

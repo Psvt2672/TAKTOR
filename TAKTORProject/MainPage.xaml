@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TAKTORProject.MainPage"
+             xmlns:viewmodels="clr-namespace:TAKTORProject.ViewModels"
              Shell.NavBarIsVisible="false"
              Background="#333335" >
 
@@ -36,7 +37,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <ImageButton ClassId="STORE" Grid.Column="0" Grid.Row="0" Background="Transparent" HeightRequest="100" WidthRequest="100" Source="storebtn.png" Clicked="Home_Clicked"/>
+                <ImageButton Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:StoreInit}}, Path=initializeStoreDataCommand}" ClassId="STORE" Grid.Column="0" Grid.Row="0" Background="Transparent" HeightRequest="100" WidthRequest="100" Source="storebtn.png" Clicked="Home_Clicked"/>
                 <Label Grid.Column="0" Grid.Row="1" Text="STORE" HorizontalOptions="Center" TextColor="#478BA2"/>
                 <ImageButton ClassId="LEARNING" Grid.Column="1" Grid.Row="0" Background="Transparent" HeightRequest="100" WidthRequest="100" Source="learningbtn.png" Clicked="Home_Clicked"/>
                 <Label Grid.Column="1" Grid.Row="1" Text="LEARNING" HorizontalOptions="Center" TextColor="#7E9680"/>

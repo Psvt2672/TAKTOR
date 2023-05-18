@@ -1,24 +1,63 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TAKTORProject.LearningPage"
-             Background="#333335">
-    <Shell.TitleView>
-        <Grid>
-            <Label 
-        Text="LEARNING"
-        Padding="15,0,0,0"        
-        HorizontalOptions="Start"
-        VerticalOptions="Center"
-        TextColor="White"
-        FontSize="Small" />
+             xmlns:viewmodels="clr-namespace:TAKTORProject.ViewModels"
+             x:DataType="viewmodels:LearningPageViewModel"
+             xmlns:models="clr-namespace:TAKTORProject.Models"
+             Background="#333335"
+             Shell.NavBarIsVisible="False"
+            >
+
+
+
+<RefreshView Grid.Row="2"
+                     Margin="0,0"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding readLearningPageCommand}">
+        <CollectionView ItemsSource="{Binding Learnings}"
+                        BackgroundColor="#222725"
+                        >
+            <CollectionView.EmptyView>
+                <StackLayout Padding="100">
+                    <Image
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        Source="empty.png"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Learning">
+                   
+                    <Grid Padding="10">
+            
+                <Grid Padding="0" RowDefinitions="125,*"
+                      BackgroundColor="Transparent">
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="125"
+                        
+                        Source="{Binding img}"
+                        WidthRequest="400" />
+                    <VerticalStackLayout
+                        Grid.Row="1"
+                        VerticalOptions="Center"
+                        Padding="10">
+                        <Label TextColor="#99e2b4" FontAttributes="Bold" FontSize="18" Text="{Binding title}" />
+                        <Label TextColor="#f7f7f2" Style="{StaticResource MediumLabel}" Text="{Binding des}" />
+                    </VerticalStackLayout>
+                    
+                </Grid>
+
         </Grid>
-    </Shell.TitleView>
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+            </RefreshView>
+
 </ContentPage>
