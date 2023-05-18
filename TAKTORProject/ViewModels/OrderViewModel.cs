@@ -9,6 +9,7 @@ using SQLite;
 
 namespace TAKTORProject.ViewModels
 {
+    //Model for Displaying Items from Table Order
     public partial class OrderViewModel : ObservableObject
     {
         [ObservableProperty]

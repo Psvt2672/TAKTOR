@@ -5,6 +5,7 @@ namespace TAKTORProject;
 public partial class initializeStoreData : ContentPage
 {
 	private SQLiteAsyncConnection conn;
+    //Page for Initializing Data for Store's Product Database
 	public initializeStoreData()
 	{
 		InitializeComponent();
@@ -196,7 +197,7 @@ public partial class initializeStoreData : ContentPage
                 Image = new Uri("https://www.thaifabricwisdom.com/sites/default/files/2022-08/018%20%E0%B8%99%E0%B8%84%E0%B8%A3%E0%B8%A3%E0%B8%B2%E0%B8%8A%E0%B8%AA%E0%B8%B5%E0%B8%A1%E0%B8%B2-011.jpg")
             },
         };
-
+        //Insert All product above into table Product in Database
         foreach (Product product in AddProducts)
         {
             conn.InsertAsync(product);

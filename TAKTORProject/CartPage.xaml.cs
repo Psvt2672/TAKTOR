@@ -5,6 +5,7 @@ namespace TAKTORProject;
 
 public partial class CartPage : ContentPage
 {
+    //Declare Database Connection
     public SQLiteAsyncConnection conn;
     public SQLiteAsyncConnection delconn;
     private Label test = new Label();
@@ -23,8 +24,8 @@ public partial class CartPage : ContentPage
         int userIdTemp = Preferences.Get("Userid", 0);
         List<Order> ord = new List<Order>();
         ord = await conn.Table<Order>().Where(x => x.UserId == userIdTemp).ToListAsync();
-
-        List<int> priceSum = new List<int>();
+        
+        List<int> priceSum = new List<int>();//Sum price of Items in Cart
         foreach (Order order in ord)
         {
             priceSum.Add(order.Price);
@@ -35,7 +36,7 @@ public partial class CartPage : ContentPage
         string TotalCost = summary.ToString();
         await Navigation.PushAsync(new SummaryPage(TotalCost));
     }
-    private async void Delete_Clicked(object sender, EventArgs e)
+    private async void Delete_Clicked(object sender, EventArgs e) //Delete selected record with Id
     {
         Button btn = sender as Button;
         int productId = Int32.Parse(btn.ClassId);
