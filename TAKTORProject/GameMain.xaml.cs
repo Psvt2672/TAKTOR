@@ -188,18 +188,18 @@ public partial class GameMain : ContentPage
 
     private void ShowScore()
     {
-        Label totalScore1 = new Label {Text = "Your Score",FontSize = 50, HorizontalOptions = LayoutOptions.Center };
+        Label totalScore1 = new Label {Text = "Your Score",FontSize = 50, HorizontalOptions = LayoutOptions.Center, TextColor = Color.FromRgb(255, 255, 255) };
         VLayout.Add(totalScore1);
-        Label totalScore2 = new Label {Text = score,FontSize = 80, HorizontalOptions = LayoutOptions.Center };
+        Label totalScore2 = new Label {Text = score,FontSize = 80, HorizontalOptions = LayoutOptions.Center, TextColor = Color.FromRgb(255, 255, 255) };
         VLayout.Add(totalScore2);
-        Button home = new Button { Text = "Back to Home" ,BackgroundColor= Color.FromRgb(255,80,180)};
+        Button home = new Button { Text = "Back to game home" ,BackgroundColor= Color.FromRgb(255,80,180), TextColor = Color.FromRgb(255,255,255) };
         home.Clicked += homeClicked;
         VLayout.Add(home);
     }
 
     private async void homeClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new MainPage());
+        await Navigation.PopAsync();
     }
     private string Score(string time)
     {

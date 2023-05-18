@@ -14,6 +14,12 @@ public partial class MainPage : ContentPage
     {
         public string Username { get; set; }
     }
+    private async void Home_Clicked(object sender, EventArgs e)
+    {
+        ImageButton btn = sender as ImageButton;
+        string path = btn.ClassId;
+        await Shell.Current.GoToAsync(path);
+    }
     private async void Store_clicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("STORE");

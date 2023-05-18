@@ -58,7 +58,6 @@ public partial class SignInPage : ContentPage
 
         //เก็บข้อมูลผู้ใช้งาน หลังจาก Login เข้าสู่ระบบ
         Preferences.Set("Username", user.Username);
-
         await Navigation.PushAsync(new MainPage()); // หลังเข้าได้อยากให้ไปหน้าไหนให้แก้ตรงนี้!!
     }
 }

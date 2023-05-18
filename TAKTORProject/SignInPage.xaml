@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TAKTORProject.SignInPage"
-             Title="SignInPage"
+             Title="SignInPage" 
+             BackgroundColor="#333335"
              Shell.NavBarIsVisible="false">
     <VerticalStackLayout VerticalOptions="Center">
-        <Grid Padding="80" BackgroundColor="#333335" >
+        <Grid Padding="80" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="220"/>
                 <RowDefinition Height="*"/>
@@ -29,7 +30,7 @@
                    VerticalTextAlignment="End" />
 
                 <Label Text="Log in to your existant account"
-                   FontSize="Medium"
+                   FontSize="Small"
                    TextColor="White"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Start" />

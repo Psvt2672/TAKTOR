@@ -5,6 +5,7 @@
              Title="GameMain"
              Shell.NavBarIsVisible="false"
              Background="#333335">
+   
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
@@ -25,9 +26,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="LPuzzle" Grid.Column="0" Grid.Row="0" FontSize="Header" >Puzzle</Label >
-            <Label x:Name="LTimer" Grid.Column="0" Grid.Row="1" FontSize="Medium" >Time:</Label >
-            <Label x:Name="LCountMove" Grid.Column="1" Grid.Row="1" FontSize="Medium" HorizontalOptions="End">Move:</Label >
+            <Label x:Name="LPuzzle" Grid.Column="0" Grid.Row="0" FontSize="Header" TextColor="White" >Puzzle</Label >
+            <Label x:Name="LTimer" Grid.Column="0" Grid.Row="1" FontSize="Medium" TextColor="White">Time:</Label >
+            <Label x:Name="LCountMove" Grid.Column="1" Grid.Row="1" FontSize="Medium" TextColor="White" HorizontalOptions="End">Move:</Label >
 
         </Grid>
 
