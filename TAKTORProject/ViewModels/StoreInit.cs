@@ -13,7 +13,7 @@ public partial class StoreInit : ObservableObject
 		
 	}
     [RelayCommand]
-    public  void initializeStoreData()
+    public  void initializeStoreDataAsync()
     {
         string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
         conn = new SQLiteAsyncConnection(dbPath);

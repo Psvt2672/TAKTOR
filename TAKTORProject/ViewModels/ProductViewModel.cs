@@ -15,17 +15,28 @@ namespace TAKTORProject.ViewModels
         [ObservableProperty]
         List<Product> products;
         private SQLiteAsyncConnection conn;
+
+        StoreInit iniD;
         public ProductViewModel()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
             conn = new SQLiteAsyncConnection(dbPath);
             conn.CreateTableAsync<Product>().Wait();
+            iniD = new StoreInit();
             GetProductsList();
         }
         public async void GetProductsList()
         {
-            //Products list is created Automatically by CommunityToolKit (ObservableProperty)
-            Products = await conn.Table<Product>().ToListAsync();
+            var content = await conn.Table<Product>().ToListAsync();
+            if (content.Count == 0)
+            {
+                iniD.initializeStoreDataAsync();
+            }
+            else
+            {
+                //Products list is created Automatically by CommunityToolKit (ObservableProperty)
+                Products = await conn.Table<Product>().ToListAsync();
+            }
         }
     }
 }
