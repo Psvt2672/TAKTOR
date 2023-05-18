@@ -20,18 +20,7 @@ public partial class MainPage : ContentPage
         string path = btn.ClassId;
         await Shell.Current.GoToAsync(path);
     }
-    private async void Store_clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("STORE");
-    }
-    private async void Learning_clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("LEARNING");
-    }
-    private async void Game_clicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("GAME");
-    }
+   
     private async void OnLogoutButtonClicked(object sender, EventArgs e)
     {
         Preferences.Remove("Username");
