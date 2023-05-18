@@ -2,6 +2,7 @@
 
 public partial class SummaryPage : ContentPage
 {
+	//Retrieve totalCost from CartPage
 	public SummaryPage(string totalCost)
 	{
 		InitializeComponent();

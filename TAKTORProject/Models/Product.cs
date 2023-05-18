@@ -8,7 +8,7 @@ using SQLite;
 namespace TAKTORProject.Models
 {
     [Table("Product")]
-    public class Product
+    public class Product //Model for Table Product
     {
         [PrimaryKey]
         public int Id { get; set; }

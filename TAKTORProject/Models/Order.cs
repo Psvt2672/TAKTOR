@@ -8,7 +8,7 @@ using SQLite;
 namespace TAKTORProject.Models
 {
     [Table("Order")]
-    public class Order
+    public class Order //Model for Table Order
     {
         [PrimaryKey, AutoIncrement]
         public int OrderId { get; set; }
