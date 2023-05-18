@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using SQLite;
 using TAKTORProject.Models;
 
-
+//same as InitializeStore and add relay command : can use in view 
 public partial class StoreInit : ObservableObject
 {
     private SQLiteAsyncConnection conn;

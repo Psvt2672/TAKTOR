@@ -8,11 +8,16 @@ public partial class SignInPage : ContentPage
     public SignInPage()
     {
         InitializeComponent();
+        //defind file path of Database file
         string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
+        //create connection
         _connection = new SQLiteAsyncConnection(dbPath);
     }
+
+    //Model User
     public class User
     {
+        //Attribute in DB
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Email { get; set; }

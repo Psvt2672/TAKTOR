@@ -4,16 +4,21 @@ namespace TAKTORProject;
 
 public partial class initializeStoreData : ContentPage
 {
+    //define connection of SQLite object
 	private SQLiteAsyncConnection conn;
     //Page for Initializing Data for Store's Product Database
 	public initializeStoreData()
 	{
 		InitializeComponent();
 
+        //define database file path
         string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
+        //create connection
         conn = new SQLiteAsyncConnection(dbPath);
+        //create table if it exist then not
         conn.CreateTableAsync<Product>().Wait();
 
+        //Assign each object of Product Model
         List<Product> AddProducts = new List<Product>()
         {
             new Product()

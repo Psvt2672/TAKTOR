@@ -11,10 +11,14 @@ public partial class RegistrationPage : ContentPage
     public RegistrationPage()
     {
         InitializeComponent();
+        //define datbase file path
         string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
+        //create connection
         _connection = new SQLiteAsyncConnection(dbPath);
+        //create table
         _connection.CreateTableAsync<User>().Wait();
     }
+    //Model User
     public class User
     {
         [PrimaryKey, AutoIncrement]

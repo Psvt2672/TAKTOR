@@ -12,6 +12,7 @@ namespace TAKTORProject.ViewModels
     public class ServiceRecord
     {
     
+        //create connection object
         private SQLiteAsyncConnection _connection;
 
         public ServiceRecord()
@@ -19,6 +20,7 @@ namespace TAKTORProject.ViewModels
             Init();
         }
         
+        //initialze database connection 
         async Task Init()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
@@ -27,7 +29,7 @@ namespace TAKTORProject.ViewModels
             
                 
         }
-
+        //method for add record in database
         public async Task AddRec(string username,int score,string time)
         {
             await Init();
@@ -42,7 +44,7 @@ namespace TAKTORProject.ViewModels
                 
 
         }
-
+        //method for get list of model 
         public async Task<List<Record>> GetRec()
         {
             await Init();
