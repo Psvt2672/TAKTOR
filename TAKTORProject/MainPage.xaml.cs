@@ -14,6 +14,7 @@ public partial class MainPage : ContentPage
     {
         public string Username { get; set; }
     }
+    //กดปุ่มเมนูต่างๆ
     private async void Home_Clicked(object sender, EventArgs e)
     {
         ImageButton btn = sender as ImageButton;
@@ -21,6 +22,7 @@ public partial class MainPage : ContentPage
         await Shell.Current.GoToAsync(path);
     }
    
+    //กดปุ่ม sign out
     private async void OnLogoutButtonClicked(object sender, EventArgs e)
     {
         Preferences.Remove("Username");
