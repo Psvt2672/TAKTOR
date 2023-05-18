@@ -5,6 +5,9 @@
              x:Class="TAKTORProject.CartPage"
              Title="CartPage"
              Background="#333335">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
     <Shell.TitleView>
         <Grid>
             <Label 
