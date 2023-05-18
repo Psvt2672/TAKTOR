@@ -26,7 +26,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="LPuzzle" Grid.Column="0" Grid.Row="0" FontSize="Header" TextColor="White" >Puzzle</Label >
+            <Label x:Name="LPuzzle" Grid.Column="0" Grid.Row="0" FontSize="Large" TextColor="White" >Puzzle</Label >
+            
             <Label x:Name="LTimer" Grid.Column="0" Grid.Row="1" FontSize="Medium" TextColor="White">Time:</Label >
             <Label x:Name="LCountMove" Grid.Column="1" Grid.Row="1" FontSize="Medium" TextColor="White" HorizontalOptions="End">Move:</Label >
 
@@ -50,5 +51,8 @@
 
 
         </Grid>
+        <StackLayout>
+            <Button Text="Quit Game" FontSize="Small" Clicked="QuitClicked" BackgroundColor="#FF5757" HorizontalOptions="End" TextColor="White"/>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

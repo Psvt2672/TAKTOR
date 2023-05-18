@@ -9,8 +9,10 @@
         <StackLayout>
             <Label Text="Sign Up"
                    FontSize="Large"
+                   FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="End" />
+                   VerticalTextAlignment="End" 
+                   TextColor="White"/>
 
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">

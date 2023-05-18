@@ -8,7 +8,7 @@ public partial class SignInPage : ContentPage
     public SignInPage()
     {
         InitializeComponent();
-        string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "users.db3");
+        string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
         _connection = new SQLiteAsyncConnection(dbPath);
     }
     public class User

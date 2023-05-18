@@ -173,7 +173,7 @@ public partial class GameMain : ContentPage
             {
                 string t = LTimer.Text;
                 timeRun = false;
-                LabelGrid.Clear();
+                VLayout.Clear();
                 score = Score(t);
                 await DisplayAlert("Congreat", "You Finish All Puzzle", "ok");
                 ShowScore();
@@ -193,13 +193,23 @@ public partial class GameMain : ContentPage
         Label totalScore2 = new Label {Text = score,FontSize = 80, HorizontalOptions = LayoutOptions.Center, TextColor = Color.FromRgb(255, 255, 255) };
         VLayout.Add(totalScore2);
         Button home = new Button { Text = "Back to game home" ,BackgroundColor= Color.FromRgb(255,80,180), TextColor = Color.FromRgb(255,255,255) };
-        home.Clicked += homeClicked;
+        home.Clicked += HomeClicked;
         VLayout.Add(home);
     }
 
-    private async void homeClicked(object sender, EventArgs e)
+    private async void HomeClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();
+    }
+
+    private async void QuitClicked(object sender, EventArgs e)
+    {
+        bool answer = await DisplayAlert("Quit Game", "Do you really want to exit?", "Yes", "No");
+        if (answer)
+        {
+            await Navigation.PopAsync();
+        }
+        
     }
     private string Score(string time)
     {
