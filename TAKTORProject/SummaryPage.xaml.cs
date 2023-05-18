@@ -1,4 +1,4 @@
-namespace TAKTORProject;
+﻿namespace TAKTORProject;
 
 public partial class SummaryPage : ContentPage
 {
@@ -12,7 +12,7 @@ public partial class SummaryPage : ContentPage
     {
 		try
 		{
-			await DisplayAlert("", "�ͺ�س����Ѻ�����觫���", "��ŧ");
+			await DisplayAlert("", "ขอบคุณสำหรับการสั่งซื้อ", "ตกลง");
 			await Shell.Current.GoToAsync("HOME");
 		}catch (Exception ex)
 		{

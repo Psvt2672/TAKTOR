@@ -40,7 +40,7 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Border MinimumHeightRequest="300"
+                            <Border MinimumHeightRequest="350"
                             Stroke="#efefef">
                                 <Grid Margin="20" BackgroundColor="LightGray">
                                     <Grid.ColumnDefinitions>
