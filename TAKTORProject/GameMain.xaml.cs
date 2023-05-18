@@ -216,6 +216,8 @@ public partial class GameMain : ContentPage
         bool answer = await DisplayAlert("Quit Game", "Do you really want to exit?", "Yes", "No");
         if (answer)
         {
+            timeRun = false;
+            VLayout.Clear();
             await Navigation.PopAsync();
         }
         
@@ -224,7 +226,7 @@ public partial class GameMain : ContentPage
     {
         time = time.Remove(0, 6);
         Double totalTime = Convert.ToDouble(time);
-        Double cal = 1000 - ((totalMove - (8 * randRow.Count())*10) - (totalTime * 100));
+        Double cal = (1000 - ((totalMove - 40) * 5)) + (1000 - (totalTime * 100));
         totalScore = (int)cal;
         return totalScore.ToString();
     }
