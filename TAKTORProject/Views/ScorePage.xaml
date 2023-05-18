@@ -7,20 +7,39 @@
              xmlns:models="clr-namespace:TAKTORProject.Models"
              Title="ScoreBoard"
              BackgroundColor="#333335">
-    <StackLayout Margin="20">
-        <Label Text="Record List" FontSize="24" TextColor="White" HorizontalOptions="Center" Margin="0,20" />
 
-        <ListView ItemsSource="{Binding Records}" BackgroundColor="#444445" SeparatorVisibility="None">
+    <Shell.TitleView>
+        <Grid>
+            <Label 
+        Text="SCORE"
+        Padding="15,0,0,0"        
+        HorizontalOptions="Start"
+        VerticalOptions="Center"
+        TextColor="White"
+        FontSize="Small" />
+        </Grid>
+    </Shell.TitleView>
+
+    <StackLayout Margin="20" HorizontalOptions="Center">
+        <Label Text="Record List" FontSize="Large" TextColor="White" HorizontalOptions="Center" Padding="20" FontAttributes="Bold"/>
+
+        <StackLayout Padding="10">
+            <Grid ColumnDefinitions="200, 100,100" ColumnSpacing="50" HorizontalOptions="Center">
+                <Label Text="Username" FontSize="Small" TextColor="White" Grid.Column="0" FontAttributes="Bold"/>
+                <Label Text="Score" FontSize="Small" TextColor="White" Grid.Column="1" FontAttributes="Bold" />
+                <Label Text="Time (min)" FontSize="Small" TextColor="White" Grid.Column="2" FontAttributes="Bold"/>
+            </Grid>
+        </StackLayout>
+        <ListView ItemsSource="{Binding Records}" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Record">
                     <ViewCell>
-                        <StackLayout Padding="10" BackgroundColor="#555555" Margin="0,0,0,0">
-                            <Grid ColumnDefinitions="auto, auto,auto" ColumnSpacing="50">
-
-                            <Label Text="{Binding Username}" FontSize="16" TextColor="White" Grid.Column="0"/>
-                            <Label Text="{Binding Score}" FontSize="16" TextColor="White" Grid.Column="1" />
-                            <Label Text="{Binding Time}" FontSize="16" TextColor="White" Grid.Column="2"/>
-                                </Grid>
+                        <StackLayout Padding="10" BackgroundColor="#555555" Margin="0,0,0,0" HorizontalOptions="Center">
+                            <Grid ColumnDefinitions="200, 100,100" ColumnSpacing="50">
+                                <Label Text="{Binding Username}" FontSize="Small" TextColor="White" Grid.Column="0"/>
+                                <Label Text="{Binding Score}" FontSize="Small" TextColor="White" Grid.Column="1" />
+                                <Label Text="{Binding Time}" FontSize="Small" TextColor="White" Grid.Column="2"/>
+                            </Grid>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
