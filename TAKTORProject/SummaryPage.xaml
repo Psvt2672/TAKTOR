@@ -19,7 +19,8 @@
         <Image Source="qrcode.png" HeightRequest="300" HorizontalOptions="Center"/>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30" >
             <Label Text="ราคา: "  TextColor="White" FontAttributes="Bold"  VerticalOptions="Center" FontSize="Small" FontFamily="KanitRegular"/>
-            <Label Text="" x:Name="Total" TextColor="White" FontAttributes="Bold"  FontSize="Small" VerticalOptions="Center" FontSize="Small" FontFamily="KanitRegular"/>
+            <Label Text="" x:Name="Total" TextColor="White" FontAttributes="Bold"  FontSize="Small" VerticalOptions="Center" FontFamily="KanitRegular"/>
+            <Label Text="บาท"  TextColor="White" FontAttributes="Bold"  VerticalOptions="Center" FontSize="Small" FontFamily="KanitRegular"/>
         </StackLayout>
         <Button Text="Finish" Clicked="Finish_Clicked" BackgroundColor="#232324" TextColor="White" WidthRequest="300"/>
     </VerticalStackLayout>
