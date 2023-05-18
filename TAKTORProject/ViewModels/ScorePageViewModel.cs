@@ -16,25 +16,26 @@ namespace TAKTORProject.ViewModels
         List<Record> records;
         public ScorePageViewModel() {
 
+            LoadObjectRecord();
+            
+        }
+        public async void LoadObjectRecord()
+        { 
             try
             {
-                records = ser.GetRec().Result;
+                Records = await ser.GetRec();
+
+                foreach (Record record in Records)
+                    Console.WriteLine(record.Score);
             }
             catch(AggregateException ex)
-{
+            {
                 // Handle or log the aggregate exception and its inner exceptions
                 foreach (var innerException in ex.InnerExceptions)
                 {
                     Console.WriteLine($"An error occurred: {innerException.Message}");
                 }
             }
-
-
-
-
-
-
-
         }
     }
 }
