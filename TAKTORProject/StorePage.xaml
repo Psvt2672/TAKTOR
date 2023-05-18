@@ -21,7 +21,7 @@
 
 
     <ScrollView >
-        <VerticalStackLayout x:Name="VLayout" VerticalOptions="Center" Margin="60,30,60,0">
+        <VerticalStackLayout x:Name="VLayout" VerticalOptions="Center" Margin="30,30,30,0">
             
             <Grid>
                 <Grid.RowDefinitions>
@@ -31,7 +31,7 @@
                     <RowDefinition Height="AUTO"/>
                 </Grid.RowDefinitions>
                 <Button  Text="Your Cart" Clicked="Cart_Clicked" WidthRequest="150" HorizontalOptions="End" BackgroundColor="#F6A942" TextColor="White"/>
-                <Label Text="List of Products" Grid.Row="1" FontSize="Large" TextColor="White" FontAttributes="Bold"/>
+                <Label Text="List of Products" Grid.Row="1" FontSize="Large" TextColor="White" FontAttributes="Bold" Margin="0,10,10,0"/>
                 
                 
                 <CollectionView ItemsSource="{Binding Products}" Grid.Row="2" >
@@ -56,16 +56,16 @@
                                             <RowDefinition Height="2*"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <Label Text="{Binding Name}" TextColor="#2B515D" FontSize="Large" FontFamily="KanitSemibold" />
-                                        <Label Text="{Binding Province}" Grid.Row="1" TextColor="#478BA2" FontSize="Medium" FontFamily="KanitSemibold"/>
+                                        <Label Text="{Binding Name}" TextColor="#2B515D" FontSize="Large" FontFamily="KanitRegular" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Province}" Grid.Row="1" TextColor="#478BA2" FontSize="Medium" FontFamily="KanitRegular"/>
                                         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End" Padding="0,0,0,20">
-                                            <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="ราคา"/>
-                                            <Label Text="{Binding Price}"  Padding="5,50,0,0" VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular"/>
-                                            <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="บาท"/>
+                                            <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="ราคา" TextColor="Black"/>
+                                            <Label Text="{Binding Price}"  Padding="5,50,5,0" VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" TextColor="Black"/>
+                                            <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="บาท" TextColor="Black"/>
                                         </StackLayout>
 
                                         <Label Text="{Binding Description}" Grid.Row="2" Padding="0,0,0,20" TextColor="#737373" FontSize="Micro" FontFamily="KanitRegular"/>
-                                        <Button Text="Order" Grid.Row="3" ClassId="{Binding Id}" x:Name="{Binding Name}" Clicked="Button_Clicked" HeightRequest="20" WidthRequest="100" HorizontalOptions="End" BackgroundColor="#7E9680"/>
+                                        <Button Text="Order" Grid.Row="3" ClassId="{Binding Id}" x:Name="{Binding Name}" Clicked="Button_Clicked" HeightRequest="40" WidthRequest="100" HorizontalOptions="End" BackgroundColor="#7E9680" TextColor="White"/>
                                     </Grid>
                                 </Grid>
                             </Border>

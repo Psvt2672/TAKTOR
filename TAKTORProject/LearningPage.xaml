@@ -5,19 +5,28 @@
              xmlns:viewmodels="clr-namespace:TAKTORProject.ViewModels"
              x:DataType="viewmodels:LearningPageViewModel"
              xmlns:models="clr-namespace:TAKTORProject.Models"
-             Background="#333335"
-             Shell.NavBarIsVisible="False"
-            >
+             Background="#333335" >
 
+    <Shell.TitleView>
+        <Grid>
+            <Label 
+        Text="LEARNING"
+        Padding="15,0,0,0"        
+        HorizontalOptions="Start"
+        VerticalOptions="Center"
+        TextColor="White"
+        FontSize="Small" />
+        </Grid>
+    </Shell.TitleView>
 
-
-<RefreshView Grid.Row="2"
+    <RefreshView Grid.Row="2"
                      Margin="0,0"
                      IsRefreshing="{Binding IsRefreshing}"
                      Command="{Binding readLearningPageCommand}">
         <CollectionView ItemsSource="{Binding Learnings}"
-                        BackgroundColor="#222725"
-                        >
+                        BackgroundColor="#222725" >
+            
+            
             <CollectionView.EmptyView>
                 <StackLayout Padding="100">
                     <Image
@@ -33,28 +42,26 @@
             
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Learning">
-                   
-                    <Grid Padding="10">
-            
-                <Grid Padding="0" RowDefinitions="125,*"
-                      BackgroundColor="Transparent">
+
+                    <Grid Margin="40,0,40,40" >    
+                    <Grid Padding="0" RowDefinitions="200,*" BackgroundColor="Transparent" >
+                      
                     <Image
                         Aspect="AspectFill"
-                        HeightRequest="125"
-                        
+                        HeightRequest="200"                        
                         Source="{Binding img}"
-                        WidthRequest="400" />
+                        />
                     <VerticalStackLayout
                         Grid.Row="1"
                         VerticalOptions="Center"
                         Padding="10">
-                        <Label TextColor="#99e2b4" FontAttributes="Bold" FontSize="18" Text="{Binding title}" />
-                        <Label TextColor="#f7f7f2" Style="{StaticResource MediumLabel}" Text="{Binding des}" />
+                            <Label TextColor="#99e2b4" FontAttributes="Bold" FontSize="Medium" Text="{Binding title}" FontFamily="KanitRegular" />
+                                <Label TextColor="#f7f7f2" Style="{StaticResource MediumLabel}" FontSize="Small" Text="{Binding des}" FontFamily="KanitRegular"/>
                     </VerticalStackLayout>
                     
                 </Grid>
-
-        </Grid>
+                </Grid>
+        
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

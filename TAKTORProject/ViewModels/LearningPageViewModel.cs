@@ -24,7 +24,7 @@ public partial class LearningPageViewModel : ObservableObject
 	{
 		try
 		{
-			await Task.Delay(2000);
+			await Task.Delay(500);
 			var fileStream = await FileSystem.Current.OpenAppPackageFileAsync("textile.json");
 			using (var reader = new StreamReader(fileStream))
 			{
