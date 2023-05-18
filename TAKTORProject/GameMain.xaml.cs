@@ -1,9 +1,11 @@
-﻿namespace TAKTORProject;
+﻿using TAKTORProject.Models;
+using TAKTORProject.ViewModels;
+namespace TAKTORProject;
 
 public partial class GameMain : ContentPage
 {
-    private int countClick = 0, countMove = 0, countCorrect = 0, queue = 0, totalMove = 0;
-    string score,a;
+    private int countClick = 0, countMove = 0, countCorrect = 0, queue = 0, totalMove = 0,totalScore;
+    string score,a, timeText;
     string[,,] gamePath;
     private TimeOnly time = new();
     private bool timeRun = true;
@@ -171,10 +173,10 @@ public partial class GameMain : ContentPage
 
             if (queue == randRow.Count())
             {
-                string t = LTimer.Text;
+                timeText = LTimer.Text;
                 timeRun = false;
                 VLayout.Clear();
-                score = Score(t);
+                score = CalScore(timeText);
                 await DisplayAlert("Congreat", "You Finish All Puzzle", "ok");
                 ShowScore();
             }
@@ -186,7 +188,7 @@ public partial class GameMain : ContentPage
         }
     }
 
-    private void ShowScore()
+    private async void ShowScore()
     {
         Label totalScore1 = new Label {Text = "Your Score",FontSize = 50, HorizontalOptions = LayoutOptions.Center, TextColor = Color.FromRgb(255, 255, 255) };
         VLayout.Add(totalScore1);
@@ -195,6 +197,13 @@ public partial class GameMain : ContentPage
         Button home = new Button { Text = "Back to game home" ,BackgroundColor= Color.FromRgb(255,80,180), TextColor = Color.FromRgb(255,255,255) };
         home.Clicked += HomeClicked;
         VLayout.Add(home);
+
+        string username = Preferences.Get("Username", string.Empty);
+        int sc = totalScore;
+        string t = timeText.Remove(0, 6);
+
+        ServiceRecord service = new ServiceRecord();
+        await service.AddRec(username, sc, t);
     }
 
     private async void HomeClicked(object sender, EventArgs e)
@@ -211,13 +220,13 @@ public partial class GameMain : ContentPage
         }
         
     }
-    private string Score(string time)
+    private string CalScore(string time)
     {
         time = time.Remove(0, 6);
         Double totalTime = Convert.ToDouble(time);
         Double cal = 1000 - ((totalMove - (8 * randRow.Count())*10) - (totalTime * 100));
-        int score = (int)cal;
-        return score.ToString();
+        totalScore = (int)cal;
+        return totalScore.ToString();
     }
 
     private void SwapImage(ImageButton swap1, ImageButton swap2)

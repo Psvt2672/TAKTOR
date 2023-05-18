@@ -1,3 +1,5 @@
+using TAKTORProject.Views;
+
 namespace TAKTORProject;
 
 public partial class GamePage : ContentPage
@@ -16,8 +18,8 @@ public partial class GamePage : ContentPage
 
     }
 
-    private void ScoreClicked(object sender, EventArgs e)
+    private async void ScoreClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new ScorePage());
     }
 }
