@@ -39,7 +39,7 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Border MinimumHeightRequest="250"
+                            <Border MinimumHeightRequest="330"
                             Stroke="#efefef">
                                 <Grid Margin="20" BackgroundColor="LightGray">
                                     <Grid.ColumnDefinitions>
@@ -62,12 +62,12 @@
                                         <Label Text="{Binding Date}" Grid.Row="2" TextColor="#478BA2" FontSize="Medium" FontFamily="KanitRegular"/>
                                         
 
-                                        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="End" >
+                                        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Start" >
                                             <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="ราคา" TextColor="#7E9680"/>
                                             <Label Text="{Binding Price}"  Padding="5,0,5,0" VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" TextColor="#7E9680"/>
                                             <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="บาท" TextColor="#7E9680"/>
                                         </StackLayout>
-
+                                        <Button Text="Delete" Grid.Row="3" ClassId="{Binding OrderId}" Clicked="Delete_Clicked" HeightRequest="20" WidthRequest="100" HorizontalOptions="End" BackgroundColor="#7E9680"/>
                                     </Grid>
                                 </Grid>
 
@@ -77,7 +77,7 @@
 
                 </CollectionView>
 
-                <Button Clicked="Summary_Clicked" Grid.Row="3"/>
+                <Button Text="Purchase" Clicked="Summary_Clicked" Grid.Row="3"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

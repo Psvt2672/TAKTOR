@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TAKTORProject.SummaryPage"
+             Title="SummaryPage"
+             Background="#333335" >
+    <VerticalStackLayout x:Name="Layout">
+        <Image Source="qrcode.png" HeightRequest="300" HorizontalOptions="Center"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30" >
+            <Label Text="ราคา: "  TextColor="White" FontAttributes="Bold"  FontSize="Small" VerticalOptions="Center"/>
+            <Label Text="" x:Name="Total" TextColor="White" FontAttributes="Bold"  FontSize="Small" VerticalOptions="Center"/>
+        </StackLayout>
+        <Button Text="Finish" Clicked="Finish_Clicked" BackgroundColor="#232324" TextColor="White" WidthRequest="300"/>
+    </VerticalStackLayout>
+</ContentPage>

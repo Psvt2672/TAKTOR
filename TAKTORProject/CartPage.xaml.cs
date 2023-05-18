@@ -6,6 +6,7 @@ namespace TAKTORProject;
 public partial class CartPage : ContentPage
 {
     public SQLiteAsyncConnection conn;
+    public SQLiteAsyncConnection delconn;
     private Label test = new Label();
     public CartPage()
 	{
@@ -29,9 +30,19 @@ public partial class CartPage : ContentPage
             priceSum.Add(order.Price);
         }
         int summary = priceSum.Sum();
-        
-        test.Text = summary.ToString();
-       
-    }
 
+        //test.Text = summary.ToString();
+        string TotalCost = summary.ToString();
+        await Navigation.PushAsync(new SummaryPage(TotalCost));
+    }
+    private async void Delete_Clicked(object sender, EventArgs e)
+    {
+        Button btn = sender as Button;
+        int productId = Int32.Parse(btn.ClassId);
+        string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
+        delconn = new SQLiteAsyncConnection(dbPath);
+        delconn.DeleteAsync<Order>(productId);
+
+        await Navigation.PushAsync(new CartPage());
+    }
 }
