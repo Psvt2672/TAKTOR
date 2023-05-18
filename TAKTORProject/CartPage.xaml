@@ -18,7 +18,7 @@
     </Shell.TitleView>
     
     <ScrollView>
-        <VerticalStackLayout x:Name="VLayout" VerticalOptions="Center" Margin="60,30,60,0">
+        <VerticalStackLayout x:Name="VLayout" VerticalOptions="Center" Margin="60,30,60,60">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="AUTO"/>
@@ -77,7 +77,7 @@
 
                 </CollectionView>
 
-                <Button Text="Purchase" Clicked="Summary_Clicked" Grid.Row="3"/>
+                <Button Text="Purchase" Clicked="Summary_Clicked" Grid.Row="3" BackgroundColor="#FF914D" Margin="0,40,0,0" WidthRequest="300"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
