@@ -49,6 +49,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Fonts\Kanit-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Kanit-SemiBold.ttf" />
 	  <None Remove="Resources\Images\afukincat.png" />
 	  <None Remove="Resources\Images\g1_001.png" />
 	  <None Remove="Resources\Images\g1_002.png" />

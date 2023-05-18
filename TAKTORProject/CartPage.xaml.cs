@@ -6,10 +6,12 @@ namespace TAKTORProject;
 public partial class CartPage : ContentPage
 {
     public SQLiteAsyncConnection conn;
+    private Label test = new Label();
     public CartPage()
 	{
 		InitializeComponent();
         BindingContext = new OrderViewModel();
+        VLayout.Add(test);
     }
     public async void Summary_Clicked (object sender, EventArgs e)
     {
@@ -27,9 +29,9 @@ public partial class CartPage : ContentPage
             priceSum.Add(order.Price);
         }
         int summary = priceSum.Sum();
-        Label test = new Label();
+        
         test.Text = summary.ToString();
-        VLayout.Add(test);
+       
     }
 
 }

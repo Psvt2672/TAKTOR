@@ -5,8 +5,24 @@
              x:Class="TAKTORProject.StorePage"
              Title="StorePage"
              Background="#333335">
-    <ScrollView>
-        <VerticalStackLayout x:Name="VLayout" VerticalOptions="Center">
+
+    <Shell.TitleView>
+        <Grid>
+            <Label 
+        Text="STORE"
+        Padding="15,0,0,0"        
+        HorizontalOptions="Start"
+        VerticalOptions="Center"
+        TextColor="White"
+        FontSize="Small" />
+        </Grid>
+    </Shell.TitleView>
+
+
+
+    <ScrollView >
+        <VerticalStackLayout x:Name="VLayout" VerticalOptions="Center" Margin="60,30,60,0">
+            
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="AUTO"/>
@@ -14,28 +30,24 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="AUTO"/>
                 </Grid.RowDefinitions>
-
-                <HorizontalStackLayout>
-                    <Label Text="Shop" FontSize="24"/>
-                </HorizontalStackLayout>
-
-                <Label Text="List of Products" Grid.Row="1"/>
-
-                <CollectionView ItemsSource="{Binding Products}"
-            Grid.Row="2">
+                <Button  Text="Your Cart" Clicked="Cart_Clicked" WidthRequest="150" HorizontalOptions="End" BackgroundColor="#F6A942" TextColor="White"/>
+                <Label Text="List of Products" Grid.Row="1" FontSize="Large" TextColor="White" FontAttributes="Bold"/>
+                
+                
+                <CollectionView ItemsSource="{Binding Products}" Grid.Row="2" >
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical"
-                                   ItemSpacing="20"/>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="20"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Border MinimumHeightRequest="316"
+                            <Border MinimumHeightRequest="300"
                             Stroke="#efefef">
-                                <Grid>
+                                <Grid Margin="20" BackgroundColor="LightGray">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
+                                                                        
                                     <Image Source="{Binding Image}"  Aspect="AspectFill"/>
                                     <Grid Grid.Column="1" Padding="16">
                                         <Grid.RowDefinitions>
@@ -44,21 +56,25 @@
                                             <RowDefinition Height="2*"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <Label Text="{Binding Name}" TextColor="CornflowerBlue" FontSize="48"/>
-                                        <Label Text="{Binding Province}" Grid.Row="1" />
-                                        <Label Text="{Binding Price}" Grid.Row="1" Padding="50,50,0,0"/>
-                                        <Label Text="{Binding Description}" Grid.Row="2" Padding="50,50,0,0" TextColor="Red" FontSize="20"/>
-                                        <Button Text="Order" Grid.Row="3" ClassId="{Binding Id}" x:Name="{Binding Name}" Clicked="Button_Clicked"/>
+                                        <Label Text="{Binding Name}" TextColor="#2B515D" FontSize="Large" FontFamily="KanitSemibold" />
+                                        <Label Text="{Binding Province}" Grid.Row="1" TextColor="#478BA2" FontSize="Medium" FontFamily="KanitSemibold"/>
+                                        <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End" Padding="0,0,0,20">
+                                            <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="ราคา"/>
+                                            <Label Text="{Binding Price}"  Padding="5,50,0,0" VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular"/>
+                                            <Label VerticalOptions="End" FontSize="Small" FontFamily="KanitRegular" Text="บาท"/>
+                                        </StackLayout>
+
+                                        <Label Text="{Binding Description}" Grid.Row="2" Padding="0,0,0,20" TextColor="#737373" FontSize="Micro" FontFamily="KanitRegular"/>
+                                        <Button Text="Order" Grid.Row="3" ClassId="{Binding Id}" x:Name="{Binding Name}" Clicked="Button_Clicked" HeightRequest="20" WidthRequest="100" HorizontalOptions="End" BackgroundColor="#7E9680"/>
                                     </Grid>
                                 </Grid>
-
                             </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
 
                 </CollectionView>
 
-                <Button Grid.Row="3" Text="Your Cart" Clicked="Cart_Clicked"/>
+                
 
             </Grid>
         </VerticalStackLayout>
