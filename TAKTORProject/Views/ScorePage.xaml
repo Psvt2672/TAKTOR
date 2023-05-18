@@ -1,18 +1,28 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TAKTORProject.Views.ScorePage"
              xmlns:viewmodels="clr-namespace:TAKTORProject.ViewModels"
              x:DataType="viewmodels:ScorePageViewModel"
              xmlns:models="clr-namespace:TAKTORProject.Models"
-             Title="ScorePage"
+             Title="ScoreBoard"
              BackgroundColor="#333335">
-    <StackLayout >
-        <ListView ItemsSource="{Binding Records}" >
+    <StackLayout Margin="20">
+        <Label Text="Record List" FontSize="24" TextColor="White" HorizontalOptions="Center" Margin="0,20" />
+
+        <ListView ItemsSource="{Binding Records}" BackgroundColor="#444445" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="models:Record">
-                    <!-- Customize the display of each record item -->
-                    <TextCell Text="{Binding Username}" />
+                    <ViewCell>
+                        <StackLayout Padding="10" BackgroundColor="#555555" Margin="0,0,0,0">
+                            <Grid ColumnDefinitions="auto, auto,auto" ColumnSpacing="50">
+
+                            <Label Text="{Binding Username}" FontSize="16" TextColor="White" Grid.Column="0"/>
+                            <Label Text="{Binding Score}" FontSize="16" TextColor="White" Grid.Column="1" />
+                            <Label Text="{Binding Time}" FontSize="16" TextColor="White" Grid.Column="2"/>
+                                </Grid>
+                        </StackLayout>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
