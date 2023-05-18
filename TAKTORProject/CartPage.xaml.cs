@@ -42,7 +42,7 @@ public partial class CartPage : ContentPage
         int productId = Int32.Parse(btn.ClassId);
         string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Taktor.db3");
         delconn = new SQLiteAsyncConnection(dbPath);
-        delconn.DeleteAsync<Order>(productId);
+        await delconn.DeleteAsync<Order>(productId);
 
         await Navigation.PushAsync(new CartPage());
     }

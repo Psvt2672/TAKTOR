@@ -7,6 +7,7 @@ using SQLite;
 
 namespace TAKTORProject.Models
 {
+    //model for Record table : collect score record
     [Table("Record")]
     public class Record
     {

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:TAKTORProject.Models"
@@ -17,10 +17,13 @@
         FontSize="Small" />
         </Grid>
     </Shell.TitleView>
+    <Grid RowDefinitions="AUTO,*">
+        <Grid ColumnDefinitions="*, AUTO" Padding="10">
+        <Button  Text="Your Cart" Grid.Column="1" Clicked="Cart_Clicked" WidthRequest="150" HorizontalOptions="End" BackgroundColor="#F6A942" TextColor="White"/>
+                <Label Text="List of Products" FontSize="Large" TextColor="White" FontAttributes="Bold"/>
+              </Grid>  
 
-
-
-    <ScrollView >
+    <ScrollView Grid.Row="1">
         <VerticalStackLayout x:Name="VLayout" VerticalOptions="Center" Margin="60,30,60,0">
             
             <Grid>
@@ -30,8 +33,6 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="AUTO"/>
                 </Grid.RowDefinitions>
-                <Button  Text="Your Cart" Clicked="Cart_Clicked" WidthRequest="150" HorizontalOptions="End" BackgroundColor="#F6A942" TextColor="White"/>
-                <Label Text="List of Products" Grid.Row="1" FontSize="Large" TextColor="White" FontAttributes="Bold"/>
                 
                 
                 <CollectionView ItemsSource="{Binding Products}" Grid.Row="2" >
@@ -79,4 +80,5 @@
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
+        </Grid>
 </ContentPage>

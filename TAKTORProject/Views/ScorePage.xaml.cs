@@ -7,6 +7,7 @@ public partial class ScorePage : ContentPage
 	{
 		//init
 		InitializeComponent();
+		//set binding item from view model of this view
 		BindingContext = new ScorePageViewModel();
 
 	}
